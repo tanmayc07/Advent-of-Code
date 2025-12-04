@@ -28,7 +28,28 @@ def part1(input: list[str]):
 
 
 def part2(input: list[str]):
-    pass
+    st = []
+    sum_joltage = 0
+
+    for line in input:
+        deletions = len(line) - 12
+        nums = list(line)
+
+        st.append(nums[0])
+        for idx in range(1, len(nums)):
+            while deletions > 0 and len(st) > 0 and st[-1] < nums[idx]:
+                st.pop()
+                deletions -= 1
+            st.append(nums[idx])
+
+        while deletions > 0:
+            st.pop()
+            deletions -= 1
+
+        sum_joltage += int("".join(st))
+        st = []
+
+    print(sum_joltage)
 
 
 if __name__ == "__main__":
