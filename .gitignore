@@ -1,0 +1,4 @@
+test
+input
+*.class
+__pycache__/
